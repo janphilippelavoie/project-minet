@@ -7,7 +7,6 @@ local Player = Class{
 
 function Player:init(world, x, y)
   self.img = love.graphics.newImage('/assets/character_block.png')
-
   Entity.init(self, world, x, y, self.img:getWidth(), self.img:getHeight())
 
   -- Add our unique Player values
@@ -55,7 +54,7 @@ function Player:update(dt)
 	end
 
   -- The Jump code gets a lttle bit crazy.  Bare with me.
-  if love.keyboard.isDown("up", "w") then
+  if love.keyboard.isDown("up", "w", " ") then
     if -self.yVelocity < self.jumpMaxSpeed and not self.hasReachedMax then
       self.yVelocity = self.yVelocity - self.jumpAcc * dt
     elseif math.abs(self.yVelocity) > self.jumpMaxSpeed then
