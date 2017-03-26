@@ -1,9 +1,9 @@
 Gamestate = require 'libs.hump.gamestate'
-LevelTest = require 'gamestates/LevelTest'
+TiledTest = require 'gamestates/TiledTest'
 
 function love.load()
   Gamestate.registerEvents()
-  Gamestate.switch(LevelTest)
+  Gamestate.switch(TiledTest)
 end
 
 function love.update(dt)
