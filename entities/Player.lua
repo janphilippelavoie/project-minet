@@ -1,11 +1,12 @@
 local Class = require 'libs.hump.class'
 local Entity = require 'entities.Entity'
+local utils = require 'utils'
 
 local Player = Class{
   __includes = Entity -- Player class inherits our Entity class
 }
 
-function Player:init(world, x, y)
+function Player:init(world, x, y, color)
 
   self.playerImages = {}
   self.playerImages.blue = love.graphics.newImage('assets/images/character_block_blue.png')
@@ -23,25 +24,26 @@ function Player:init(world, x, y)
   self.gravity = 80 -- we will accelerate towards the bottom
 
     -- These are values applying specifically to jumping
-  self.isJumping = false -- are we in the process of jumping?
   self.isGrounded = false -- are we on the ground?
   self.hasReachedMax = false  -- is this as high as we can go?
   self.jumpAcc = 500 -- how fast do we accelerate towards the top
   self.jumpMaxSpeed = 11 -- our speed limit while jumping
 
   self.world:add(self, self:getRect())
-
-  self.color = 'blue'
+  self.color = color or 'blue'
   self.hasReachedExit = false
 end
-
 function Player:collisionFilter(other)
+
   if other.properties.isExit then
     self.hasReachedExit = true
   elseif other.properties.magicColor == self.color then
     return 'cross'
   elseif other.properties.vortex then
     self.color = other.properties.vortex
+  elseif other.properties.breakable and player.color == 'red' then
+    print(other.y)
+    -- self.world:remove(other, other.getRect)
   else
     return 'slide'
   end
@@ -71,7 +73,6 @@ function Player:update(dt)
     elseif math.abs(self.yVelocity) > self.jumpMaxSpeed then
       self.hasReachedMax = true
     end
-
     self.isGrounded = false -- we are no longer in contact with the ground
   end
 
@@ -84,12 +85,9 @@ function Player:update(dt)
 
   -- Loop through those collisions to see if anything important is happening
   for i, coll in ipairs(collisions) do
-    if coll.touch.y > goalY then  -- We touched below (remember that higher locations have lower y values) our intended target.
-      self.hasReachedMax = true -- this scenario does not occur in this demo
-      self.isGrounded = false
-    elseif coll.normal.y < 0 then
-      self.hasReachedMax = false
+    if coll.touch.y < goalY and coll.type == 'slide' then  -- We touched below (remember that higher locations have lower y values) our intended target.
       self.isGrounded = true
+      self.hasReachedMax = false
     end
   end
 end

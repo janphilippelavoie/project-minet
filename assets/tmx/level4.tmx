@@ -1,6 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="32" tileheight="32" nextobjectid="2">
- <tileset firstgid="1" source="../tiles/basic_terrain.tsx"/>
+ <tileset firstgid="1" name="sheet1" tilewidth="32" tileheight="32" tilecount="64" columns="8">
+  <image source="../tiles/sheet1.png" width="256" height="256"/>
+  <tile id="0">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+    <property name="vortex" value="blue"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+    <property name="vortex" value="red"/>
+   </properties>
+  </tile>
+  <tile id="20">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+    <property name="vortex" value="green"/>
+   </properties>
+  </tile>
+  <tile id="25">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+    <property name="isExit" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="37">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+    <property name="magicColor" value="blue"/>
+   </properties>
+  </tile>
+  <tile id="38">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+    <property name="magicColor" value="green"/>
+   </properties>
+  </tile>
+  <tile id="39">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+    <property name="magicColor" value="red"/>
+   </properties>
+  </tile>
+ </tileset>
  <objectgroup name="meta">
   <object id="1" name="player" x="65" y="490">
    <properties>

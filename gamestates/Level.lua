@@ -10,27 +10,15 @@ local Player = require 'entities.Player'
 
 local Level = {}
 
--- Import the Entities we build.
-
--- Declare a couple immportant variables
-player = nil
-world = nil
-
-
 function Level:enter(_, mapFile)
   map = sti(mapFile, {"bump"})
-  -- map = sti(mapFile, {"bump"})
-
-	-- Prepare physics world with horizontal and vertical gravity
-  -- Prepare collision objects
 
   world = bump.newWorld(32) -- Create a world for bump to function in.
   map:bump_init(world)
-
-  -- Initialize our Entity System
   Entities:enter()
   playerObject = getObject('meta', 'player')
-  player = Player(world, playerObject.x, playerObject.y)
+  print(playerObject.properties)
+  player = Player(world, playerObject.x, playerObject.y, playerObject.properties.color)
   Entities:addMany({map, player})
 end
 

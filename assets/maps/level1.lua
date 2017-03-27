@@ -9,7 +9,9 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextobjectid = 5,
-  properties = {},
+  properties = {
+    ["color"] = "blue"
+  },
   tilesets = {
     {
       name = "sheet1",

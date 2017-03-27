@@ -49,6 +49,13 @@ return {
           }
         },
         {
+          id = 11,
+          properties = {
+            ["collidable"] = true,
+            ["vortex"] = "blue"
+          }
+        },
+        {
           id = 12,
           properties = {
             ["collidable"] = true,
@@ -83,6 +90,13 @@ return {
           }
         },
         {
+          id = 38,
+          properties = {
+            ["collidable"] = true,
+            ["magicColor"] = "green"
+          }
+        },
+        {
           id = 39,
           properties = {
             ["collidable"] = true,
@@ -114,7 +128,9 @@ return {
           height = 27,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["color"] = "blue"
+          }
         }
       }
     },

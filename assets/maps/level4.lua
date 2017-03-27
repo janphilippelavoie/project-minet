@@ -14,7 +14,6 @@ return {
     {
       name = "sheet1",
       firstgid = 1,
-      filename = "../tiles/basic_terrain.tsx",
       tilewidth = 32,
       tileheight = 32,
       spacing = 0,
