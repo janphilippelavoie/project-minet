@@ -1,5 +1,4 @@
 Gamestate = require 'libs.hump.gamestate'
-TiledTest = require 'gamestates/TiledTest'
 Menu = require 'gamestates/Menu'
 
 function love.load()

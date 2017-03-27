@@ -1,5 +1,5 @@
 Gamestate = require 'libs.hump.gamestate'
-TiledTest = require 'gamestates/TiledTest'
+Level = require 'gamestates/Level'
 
 local Menu = {}
 
@@ -16,7 +16,7 @@ end
 
 function Menu:keyreleased(key, code)
     if key == 'return' then
-        Gamestate.push(TiledTest)
+        Gamestate.push(Level, 'assets/maps/level1.lua')
     end
 end
 

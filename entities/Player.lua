@@ -26,12 +26,15 @@ function Player:init(world, x, y)
 
   self.world:add(self, self:getRect())
 
+  self.color = 'blue'
   self.hasReachedExit = false
 end
 
 function Player:collisionFilter(other)
   if other.properties.isExit then
     self.hasReachedExit = true
+  elseif other.properties.magicColor == self.color then
+    return 'cross'
   else
     return 'slide'
   end

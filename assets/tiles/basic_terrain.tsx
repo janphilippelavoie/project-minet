@@ -16,6 +16,12 @@
    <property name="collidable" type="bool" value="true"/>
   </properties>
  </tile>
+ <tile id="28">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+   <property name="isExit" type="bool" value="true"/>
+  </properties>
+ </tile>
  <tile id="39">
   <properties>
    <property name="collidable" type="bool" value="true"/>
