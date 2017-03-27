@@ -8,9 +8,9 @@ local Player = Class{
 function Player:init(world, x, y)
 
   self.playerImages = {}
-  self.playerImages.blue = love.graphics.newImage('assets/character_block_blue.png')
-  self.playerImages.red = love.graphics.newImage('assets/character_block_red.png')
-  self.playerImages.green = love.graphics.newImage('assets/character_block_green.png')
+  self.playerImages.blue = love.graphics.newImage('assets/images/character_block_blue.png')
+  self.playerImages.red = love.graphics.newImage('assets/images/character_block_red.png')
+  self.playerImages.green = love.graphics.newImage('assets/images/character_block_green.png')
   self.img = self.playerImages.blue
   Entity.init(self, world, x, y, self.img:getWidth(), self.img:getHeight())
 
