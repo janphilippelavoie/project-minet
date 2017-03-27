@@ -3,6 +3,10 @@ Level = require 'gamestates/Level'
 
 local Menu = {}
 
+local levels = {}
+levels.a = 'assets/maps/level1.lua'
+levels.b = 'assets/maps/level2.lua'
+
 function Menu:enter()
 end
 
@@ -10,14 +14,18 @@ function Menu:update(dt)
 end
 
 function Menu:draw()
-  love.graphics.printf("Press enter!", 0, love.graphics.getHeight()/2,
-   love.graphics.getWidth(), 'center', 0, 1, 1)
+  local y = 0
+  for key, level in pairs(levels) do
+    local text = string.format("%s: %s", key, level)
+    love.graphics.print(text, 0, y)
+    y = y + 15
+  end
 end
 
-function Menu:keyreleased(key, code)
-    if key == 'return' then
-        Gamestate.push(Level, 'assets/maps/level1.lua')
-    end
+function Menu:textinput(text)
+  if levels[text] then
+    Gamestate.push(Level, levels[text])
+  end
 end
 
 return Menu

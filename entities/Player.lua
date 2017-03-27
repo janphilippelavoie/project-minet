@@ -6,7 +6,12 @@ local Player = Class{
 }
 
 function Player:init(world, x, y)
-  self.img = love.graphics.newImage('/assets/character_block.png')
+
+  self.playerImages = {}
+  self.playerImages.blue = love.graphics.newImage('assets/character_block_blue.png')
+  self.playerImages.red = love.graphics.newImage('assets/character_block_red.png')
+  self.playerImages.green = love.graphics.newImage('assets/character_block_green.png')
+  self.img = self.playerImages.blue
   Entity.init(self, world, x, y, self.img:getWidth(), self.img:getHeight())
 
   -- Add our unique Player values
@@ -35,12 +40,15 @@ function Player:collisionFilter(other)
     self.hasReachedExit = true
   elseif other.properties.magicColor == self.color then
     return 'cross'
+  elseif other.properties.vortex then
+    self.color = other.properties.vortex
   else
     return 'slide'
   end
 end
 
 function Player:update(dt)
+  self.img = self.playerImages[self.color]
   local prevX, prevY = self.x, self.y
 
   -- Apply Friction
