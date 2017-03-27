@@ -34,17 +34,10 @@ function Level:enter(_, mapFile)
   Entities:addMany({map, player})
 end
 
-function getObject(layerName, objectName)
-  for _, layer in ipairs(map.layers) do
-    if layer.type == 'objectgroup' and layer.name == layerName then
-      for _, object in ipairs(layer.objects) do
-        if object.name == objectName then
-          return object
-        end
-      end
-    end
+function Level:keypressed(key)
+  if key == 'backspace' then
+    Gamestate.pop()
   end
-  return nil
 end
 
 function Level:update(dt)
@@ -56,6 +49,19 @@ end
 
 function Level:draw()
 	Entities:draw()
+end
+
+function getObject(layerName, objectName)
+  for _, layer in ipairs(map.layers) do
+    if layer.type == 'objectgroup' and layer.name == layerName then
+      for _, object in ipairs(layer.objects) do
+        if object.name == objectName then
+          return object
+        end
+      end
+    end
+  end
+  return nil
 end
 
 return Level

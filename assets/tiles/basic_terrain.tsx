@@ -16,6 +16,12 @@
    <property name="collidable" type="bool" value="true"/>
   </properties>
  </tile>
+ <tile id="11">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+   <property name="vortex" value="blue"/>
+  </properties>
+ </tile>
  <tile id="12">
   <properties>
    <property name="collidable" type="bool" value="true"/>
@@ -43,6 +49,12 @@
   <properties>
    <property name="collidable" type="bool" value="true"/>
    <property name="magicColor" value="blue"/>
+  </properties>
+ </tile>
+ <tile id="38">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+   <property name="magicColor" value="green"/>
   </properties>
  </tile>
  <tile id="39">
