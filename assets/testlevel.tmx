@@ -1,40 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="32" tileheight="32" nextobjectid="1">
- <tileset firstgid="1" name="platforms" tilewidth="32" tileheight="32" tilecount="64" columns="8">
-  <image source="../../../Downloads/sheet1.png" width="256" height="256"/>
-  <tile id="0">
-   <properties>
-    <property name="collidable" type="bool" value="true"/>
-   </properties>
-  </tile>
-  <tile id="1">
-   <properties>
-    <property name="collidable" type="bool" value="true"/>
-   </properties>
-  </tile>
-  <tile id="2">
-   <properties>
-    <property name="collidable" type="bool" value="true"/>
-   </properties>
-  </tile>
- </tileset>
- <layer name="Tile Layer 1" width="20" height="15">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="32" tileheight="32" nextobjectid="9">
+ <tileset firstgid="1" source="tiles/basic_terrain.tsx"/>
+ <objectgroup name="meta">
+  <object id="1" name="player" x="32" y="403" width="31" height="45"/>
+ </objectgroup>
+ <imagelayer name="sky">
+  <image source="images/sky_background_by_kaiseto.png" width="640" height="480"/>
+ </imagelayer>
+ <layer name="level" width="20" height="15">
   <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,33,33,33,0,33,0,33,33,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,
-0,0,0,0,0,0,0,0,37,0,0,0,0,0,0,0,0,0,0,33,
-0,0,0,0,37,0,0,0,37,0,0,0,0,37,0,0,0,0,0,33,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,
-1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,
-9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,10,9,9,9,
-9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,0,0,29,0,
+2,2,2,2,2,2,2,2,2,9,9,9,9,9,9,9,2,2,2,2
 </data>
  </layer>
 </map>

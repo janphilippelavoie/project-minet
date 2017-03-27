@@ -8,7 +8,7 @@ return {
   height = 15,
   tilewidth = 32,
   tileheight = 32,
-  nextobjectid = 1,
+  nextobjectid = 9,
   properties = {},
   tilesets = {
     {
@@ -48,6 +48,13 @@ return {
           }
         },
         {
+          id = 28,
+          properties = {
+            ["collidable"] = true,
+            ["isExit"] = true
+          }
+        },
+        {
           id = 39,
           properties = {
             ["collidable"] = true
@@ -58,8 +65,43 @@ return {
   },
   layers = {
     {
+      type = "objectgroup",
+      name = "meta",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      draworder = "topdown",
+      properties = {},
+      objects = {
+        {
+          id = 1,
+          name = "player",
+          type = "",
+          shape = "rectangle",
+          x = 32,
+          y = 403,
+          width = 31,
+          height = 45,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "imagelayer",
+      name = "sky",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      image = "../images/sky_background_by_kaiseto.png",
+      properties = {}
+    },
+    {
       type = "tilelayer",
-      name = "Tile Layer 1",
+      name = "level",
       x = 0,
       y = 0,
       width = 20,
@@ -84,7 +126,7 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 3, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 29, 0,
         2, 2, 2, 2, 2, 2, 2, 2, 2, 9, 9, 9, 9, 9, 9, 9, 2, 2, 2, 2
       }
     }

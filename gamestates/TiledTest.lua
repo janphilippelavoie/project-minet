@@ -17,12 +17,9 @@ player = nil
 world = nil
 
 
--- This example uses the included Box2D (love.physics) plugin!!
-
 local sti = require "libs.sti.sti"
 
 function TiledTest:enter()
-  print("TiledTest:enter")
 	-- Grab window size
 	windowWidth  = love.graphics.getWidth()
 	windowHeight = love.graphics.getHeight()
@@ -40,62 +37,37 @@ function TiledTest:enter()
   map:bump_init(world)
   -- Initialize our Entity System
   Entities:enter()
-  player = Player(world, 16, 16)
+
+  playerObject = getObject('meta', 'player')
+  player = Player(world, playerObject.x, playerObject.y)
 
   Entities:addMany({map, player})
 
-  for i, e in ipairs(world) do
-    print("World: ")
-    print(e)
-  end
 
-	-- Create a Custom Layer
-	-- map:addCustomLayer("Sprite Layer", 3)
-  --
-	-- -- Add data to Custom Layer
-	-- local spriteLayer = map.layers["Sprite Layer"]
-	-- spriteLayer.sprites = {
-	-- 	player = {
-	-- 		image = love.graphics.newImage("assets/sprites/player.png"),
-	-- 		x = 64,
-	-- 		y = 64,
-	-- 		r = 0,
-	-- 	}
-	-- }
-  --
--- 	-- Update callback for Custom Layer
--- 	function TiledTest:update(dt)
--- 		for _, sprite in pairs(self.sprites) do
--- 			sprite.r = sprite.r + math.rad(90 * dt)
--- 		end
--- 	end
---
--- 	-- Draw callback for Custom Layer
--- 	function TiledTest:draw()
--- 		for _, sprite in pairs(self.sprites) do
--- 			local x = math.floor(sprite.x)
--- 			local y = math.floor(sprite.y)
--- 			local r = sprite.r
--- 			love.graphics.draw(sprite.image, x, y, r)
--- 		end
--- 	end
--- end
+end
+
+function getObject(layerName, objectName)
+  for _, layer in ipairs(map.layers) do
+    if layer.type == 'objectgroup' and layer.name == layerName then
+      for _, object in ipairs(layer.objects) do
+        if object.name == objectName then
+          return object
+        end
+      end
+    end
+  end
+  return nil
 end
 
 function TiledTest:update(dt)
+  if player.hasReachedExit then
+    return Gamestate.pop()
+  end
   Entities:update(dt)
 end
 
 function TiledTest:draw()
-	-- Draw the map and all objects within
 	Entities:draw()
-
-	-- Draw Collision Map (useful for debugging)
-	-- love.graphics.setColor(255, 0, 0, 255)
-	-- map:box2d_draw()
-  --
-	-- -- Reset color
-	-- love.graphics.setColor(255, 255, 255, 255)
 end
 
 return TiledTest

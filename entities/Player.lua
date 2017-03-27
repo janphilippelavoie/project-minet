@@ -25,14 +25,14 @@ function Player:init(world, x, y)
   self.jumpMaxSpeed = 11 -- our speed limit while jumping
 
   self.world:add(self, self:getRect())
+
+  self.hasReachedExit = false
 end
 
 function Player:collisionFilter(other)
-  local x, y, w, h = self.world:getRect(other)
-  local PlayerBottom = self.y + self.h
-  local otherBottom = y + h
-
-  if PlayerBottom <= y then -- bottom of Player collides with top of platform.
+  if other.properties.isExit then
+    self.hasReachedExit = true
+  else
     return 'slide'
   end
 end
