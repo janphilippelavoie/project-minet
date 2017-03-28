@@ -6,20 +6,34 @@ sti = require 'libs.sti.sti'
 -- Import our Entity system.
 local Entities = require 'entities.Entities'
 local Player = require 'entities.Player'
+local Block = require 'entities.Block'
+local inspect = require "inspect"
 
 
 local Level = {}
 
+-- Import the Entities we build.
+
+-- Declare a couple immportant variables
+player = nil
+world = nil
+
+
 function Level:enter(_, mapFile)
   map = sti(mapFile, {"bump"})
 
+  -- map = sti(mapFile, {"bump"})
+
   world = bump.newWorld(32) -- Create a world for bump to function in.
-  map:bump_init(world)
+
   Entities:enter()
-  playerObject = getObject('meta', 'player')
-  print(playerObject.properties)
-  player = Player(world, playerObject.x, playerObject.y, playerObject.properties.color)
-  Entities:addMany({map, player})
+
+  processObjectLayer(map, 'meta')
+
+  map:bump_init(world)
+
+  -- Initialize our Entity System
+  Entities:add(player)
 end
 
 function Level:keypressed(key)
@@ -36,7 +50,27 @@ function Level:update(dt)
 end
 
 function Level:draw()
+  map:draw()
 	Entities:draw()
+end
+
+function processObjectLayer(map, layerName)
+  for index, layer in ipairs(map.layers) do
+    if layer.name == layerName then
+      for _, object in pairs(layer.objects) do
+        if object.type == 'block' then
+          block = Block(world, object, map.tileset[object.tilesset].image, map.tiles[object.gid].quad)
+          Entities:add(block)
+        end
+        if object.type == 'player' then
+          player = Player(world, object)
+          Entities:add(player)
+        end
+      end
+
+      map:removeLayer(index)
+    end
+  end
 end
 
 function getObject(layerName, objectName)

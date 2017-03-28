@@ -9,7 +9,6 @@ local Entities = {
 
 function Entities:enter(world)
   self:clear()
-
   self.world = world
 end
 
