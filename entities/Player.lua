@@ -1,6 +1,5 @@
 local Class = require 'libs.hump.class'
 local Entity = require 'entities.Entity'
-local utils = require 'utils'
 
 local Player = Class{
   __includes = Entity -- Player class inherits our Entity class
