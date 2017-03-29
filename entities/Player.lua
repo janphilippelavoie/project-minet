@@ -1,22 +1,21 @@
 local Class = require 'libs.hump.class'
 local Entity = require 'entities.Entity'
-local inspect = require 'inspect'
 
 
 local Player = Class{
   __includes = Entity -- Player class inherits our Entity class
 }
 
-function Player:init(world, object)
-
-  self.color = object.properties.color or 'blue'
+function Player:init(world, x, y, color)
+  self.color = color or 'blue'
   self.playerImages = {}
   self.playerImages.blue = love.graphics.newImage('assets/images/character_block_blue.png')
   self.playerImages.red = love.graphics.newImage('assets/images/character_block_red.png')
   self.playerImages.green = love.graphics.newImage('assets/images/character_block_green.png')
   self.img = self.playerImages.blue
 
-  Entity.init(self, world, object.x, object.y, self.img:getWidth(), self.img:getHeight())
+
+  Entity.init(self, world, x, y, self.img:getWidth(), self.img:getHeight())
 
   -- Add our unique Player values
   self.xVelocity = 0 -- current velocity on x, y axes
@@ -32,7 +31,6 @@ function Player:init(world, object)
   self.jumpAcc = 500 -- how fast do we accelerate towards the top
   self.jumpMaxSpeed = 11 -- our speed limit while jumping
 
-  self.world:add(self, self:getRect())
 
   self.hasReachedExit = false
 end

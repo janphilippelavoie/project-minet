@@ -3,13 +3,11 @@
 
 local Entities = {
   active = true,
-  world = nil,
   entityList = {}
 }
 
-function Entities:enter(world)
+function Entities:enter()
   self:clear()
-  self.world = world
 end
 
 function Entities:add(entity)
@@ -36,7 +34,6 @@ function Entities:removeAt(index)
 end
 
 function Entities:clear()
-  self.world = nil
   self.entityList = {}
 end
 
