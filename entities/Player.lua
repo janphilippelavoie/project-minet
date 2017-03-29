@@ -35,22 +35,24 @@ function Player:init(world, x, y, color)
   self.hasReachedExit = false
 end
 function Player:collisionFilter(other)
-
-  if other.properties.isExit then
+  if other.filter then
+    return other:filter(self) or 'slide'
+  elseif other.properties.isExit then
     self.hasReachedExit = true
   elseif other.properties.magicColor == self.color then
     return 'cross'
   elseif other.properties.vortex then
     self.color = other.properties.vortex
-  elseif other.properties.breakable and player.color == 'red' then
-    print(other.y)
-    -- self.world:remove(other, other.getRect)
+    return 'cross'
   else
     return 'slide'
   end
 end
 
 function Player:update(dt)
+  if self.hasReachedExit then
+    Gamestate.pop()
+  end
   self.img = self.playerImages[self.color]
   local prevX, prevY = self.x, self.y
 

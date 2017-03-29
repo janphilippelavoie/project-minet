@@ -14,10 +14,9 @@ local Level = {}
 
 function Level:enter(_, mapFile)
   map = sti(mapFile, {"bump"})
-
   world = bump.newWorld(32)
 
-  Entities:enter()
+  Entities:enter(world)
   TiledHelper:processObjectLayer(world, map, 'meta')
   map:bump_init(world)
 

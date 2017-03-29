@@ -6,18 +6,25 @@ local Block = Class{
 }
 
 function Block:init(world, x, y, width, height, properties)
-  Entity.init(self, world, x, y, width, height)
+  self.img = love.graphics.newImage('assets/tiles/snow.png')
+  assert(width == self.img:getWidth()) -- Checking if tile used in tile editor is the right size
+  assert(height == self.img:getHeight())
+  Entity.init(self, world, x, y, self.img:getWidth(), self.img:getHeight())
   self.properties = properties
 end
 
 function Block:draw()
-  love.graphics.rectangle("fill", self:getRect())
+  love.graphics.draw(self.img, self.x, self.y)
 end
 
 function Block:update(dt)
-  local goalX = self.x + 30*dt
-  local goalY = self.y - 60*dt
-  self.x, self.y = self.world:move(self, goalX, goalY)
+end
+
+function Block:filter(player)
+  if player.color == 'red' then
+    self.delete = true
+    return 'cross'
+  end
 end
 
 return Block

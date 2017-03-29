@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="32" tileheight="32" nextobjectid="16">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="32" tileheight="32" nextobjectid="19">
  <tileset firstgid="1" name="sheet1" tilewidth="32" tileheight="32" tilecount="64" columns="8">
   <image source="../tiles/sheet1.png" width="256" height="256"/>
   <tile id="0">
@@ -75,13 +75,13 @@
   <image source="../images/plainblue.jpg" width="1024" height="576"/>
  </imagelayer>
  <objectgroup name="meta">
-  <object id="1" name="player" type="player" x="65" y="490">
+  <object id="1" name="player" type="player" x="110.333" y="499.333">
    <properties>
-    <property name="color" value="red"/>
+    <property name="color" value="blue"/>
    </properties>
   </object>
-  <object id="5" name="b2" type="block" gid="25" x="288" y="544" width="32" height="32"/>
-  <object id="6" name="b1" type="block" gid="25" x="288" y="512" width="32" height="32"/>
+  <object id="6" type="block" gid="25" x="832" y="544" width="32" height="32"/>
+  <object id="17" type="block" gid="25" x="832" y="512" width="32" height="32"/>
  </objectgroup>
  <layer name="level" width="32" height="18">
   <data encoding="csv">
@@ -100,8 +100,8 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,26,26,26,26,26,26,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,25,38,0,0,0,26,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,25,38,0,29,0,26,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,26,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,29,0,26,
 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2
 </data>
  </layer>

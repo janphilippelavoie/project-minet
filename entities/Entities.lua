@@ -3,15 +3,18 @@
 
 local Entities = {
   active = true,
+  world = nil,
   entityList = {}
 }
 
-function Entities:enter()
+function Entities:enter(world)
   self:clear()
+  self.world = world
 end
 
 function Entities:add(entity)
   table.insert(self.entityList, entity)
+  self.world:add(entity, entity:getRect())
 end
 
 function Entities:addMany(entities)
@@ -45,7 +48,12 @@ end
 
 function Entities:update(dt)
   for i, e in ipairs(self.entityList) do
-    e:update(dt, i)
+    if e.delete then
+      self:removeAt(i)
+      self.world:remove(e)
+    else
+      e:update(dt, i)
+    end
   end
 end
 

@@ -9,6 +9,7 @@ function Entity:init(world, x, y, w, h)
   self.y = y
   self.w = w
   self.h = h
+  self.delete = false
 end
 
 function Entity:getRect()
