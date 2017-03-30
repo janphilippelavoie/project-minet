@@ -2,9 +2,9 @@
 local Entities = require 'entities.Entities'
 local Block = require 'entities.Block'
 local Player = require 'entities.Player'
+local Vortex = require 'entities.Vortex'
 
 
-print(Entities)
 local TiledHelper = {}
 
 local factories = {}
@@ -18,6 +18,11 @@ factories.block = function(world, object)
   local block = Block(world, object.x, object.y - object.height, object.width, object.height, object.properties)
   Entities:add(block)
 end
+
+factories.vortex = function(world, object)
+  local vortex = Vortex(world, object.x, object.y - object.height, object.properties)
+  Entities:add(vortex)
+ end
 
 
 

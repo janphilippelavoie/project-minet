@@ -10,7 +10,7 @@ levels.c = 'assets/maps/level3.lua'
 levels.d = 'assets/maps/level4.lua'
 levels.e = 'assets/maps/level5.lua'
 levels.f = 'assets/maps/levelA1.lua'
-
+levels.g = 'assets/maps/level6.lua'
 
 function Menu:enter()
 end

@@ -41,9 +41,6 @@ function Player:collisionFilter(other)
     self.hasReachedExit = true
   elseif other.properties.magicColor == self.color then
     return 'cross'
-  elseif other.properties.vortex then
-    self.color = other.properties.vortex
-    return 'cross'
   else
     return 'slide'
   end

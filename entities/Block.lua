@@ -5,7 +5,7 @@ local Block = Class{
   __includes = Entity -- Ground class inherits our Entity class
 }
 
-function Block:init(world, x, y, width, height, properties)
+function Block:init(world, x, y, width, height, color)
   self.img = love.graphics.newImage('assets/tiles/snow.png')
   assert(width == self.img:getWidth()) -- Checking if tile used in tile editor is the right size
   assert(height == self.img:getHeight())
