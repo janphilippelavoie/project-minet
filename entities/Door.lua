@@ -5,8 +5,9 @@ local Door = Class{
   __includes = Entity
 }
 
-function Door:init(world, x, y)
-  -- Entity.init(self, world, x, y, self.img:getWidth(), self.img:getHeight())
+function Door:init(world, x, y, properties)
+  self.properties = properties
+  Entity.init(self, world, x, y, self.img:getWidth(), self.img:getHeight())
 end
 
 function Door:update(dt)
