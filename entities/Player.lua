@@ -14,7 +14,6 @@ function Player:init(world, x, y, color)
   self.playerImages.green = love.graphics.newImage('assets/images/character_block_green.png')
   self.img = self.playerImages.blue
 
-
   Entity.init(self, world, x, y, self.img:getWidth(), self.img:getHeight())
 
   -- Add our unique Player values
@@ -30,7 +29,6 @@ function Player:init(world, x, y, color)
   self.hasReachedMax = false  -- is this as high as we can go?
   self.jumpAcc = 500 -- how fast do we accelerate towards the top
   self.jumpMaxSpeed = 11 -- our speed limit while jumping
-
 
   self.hasReachedExit = false
 end
@@ -82,6 +80,7 @@ function Player:update(dt)
 
   -- Move the Player while testing for collisions
   self.x, self.y, collisions, len = self.world:move(self, goalX, goalY, self.collisionFilter)
+  camera:lockX(self.x)
 
   -- Loop through those collisions to see if anything important is happening
   for i, coll in ipairs(collisions) do

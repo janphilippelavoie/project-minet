@@ -12,6 +12,7 @@ local factories = {}
 factories.player = function(world, object)
   return Player(world, object.x, object.y, object.properties.color)
 end
+
 factories.block = function(world, object)
   return Block(world, object.x, object.y - object.height, object.width, object.height, object.properties)
 end
