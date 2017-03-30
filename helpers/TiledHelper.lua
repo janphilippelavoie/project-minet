@@ -3,6 +3,7 @@ local Entities = require 'entities.Entities'
 local Block = require 'entities.Block'
 local Player = require 'entities.Player'
 local Vortex = require 'entities.Vortex'
+local Door = require 'entitites.Doors'
 
 
 local TiledHelper = {}
@@ -24,6 +25,10 @@ factories.vortex = function(world, object)
   Entities:add(vortex)
  end
 
+factories.door = function(world, object)
+  local door = Door()
+  Entities:add(door)
+end
 
 
 function TiledHelper:processObjectLayer(world, map, layerName)
