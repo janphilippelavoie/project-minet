@@ -9,6 +9,7 @@ local images = {}
 images.blue = 'assets/tiles/2017-03-27_Tileset_0/vortex_blue.png'
 images.red = 'assets/tiles/2017-03-27_Tileset_0/vortex_red.png'
 images.green = 'assets/tiles/2017-03-27_Tileset_0/vortex_green.png'
+
 function Vortex:init(world, x, y, properties)
   self.properties = properties
   self.img = love.graphics.newImage(images[properties.color])
