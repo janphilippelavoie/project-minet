@@ -5,7 +5,7 @@ sti = require 'libs.sti.sti'
 
 -- Import our Entity system.
 local Entities = require 'entities.Entities'
-local TiledHelper = require 'helpers.TiledHelper'
+local TiledObjectFactory = require 'helpers.TiledObjectFactory'
 
 
 local Level = {}
@@ -17,7 +17,7 @@ function Level:enter(_, mapFile)
   world = bump.newWorld(32)
 
   Entities:enter(world)
-  TiledHelper:processObjectLayer(world, map, 'meta')
+  TiledObjectFactory:processObjectLayer(world, map, 'meta')
   map:bump_init(world)
 
 end

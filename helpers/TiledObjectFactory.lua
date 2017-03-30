@@ -5,34 +5,31 @@ local Player = require 'entities.Player'
 local Vortex = require 'entities.Vortex'
 
 
-local TiledHelper = {}
+local TiledObjectFactory = {}
 
 local factories = {}
 
 factories.player = function(world, object)
-  local player = Player(world, object.x, object.y, object.properties.color)
-  Entities:add(player)
+  return Player(world, object.x, object.y, object.properties.color)
 end
-
 factories.block = function(world, object)
-  local block = Block(world, object.x, object.y - object.height, object.width, object.height, object.properties)
-  Entities:add(block)
+  return Block(world, object.x, object.y - object.height, object.width, object.height, object.properties)
 end
 
 factories.vortex = function(world, object)
-  local vortex = Vortex(world, object.x, object.y - object.height, object.properties)
-  Entities:add(vortex)
- end
+  return Vortex(world, object.x, object.y - object.height, object.properties)
+end
 
 
 
-function TiledHelper:processObjectLayer(world, map, layerName)
+function TiledObjectFactory:processObjectLayer(world, map, layerName)
   for index, layer in ipairs(map.layers) do
     if layer.name == layerName then
       for _, object in pairs(layer.objects) do
         local type = object.type
         if factories[type] then
-          factories[type](world, object)
+          entity = factories[type](world, object)
+          Entities:add(entity)
         end
       end
       map:removeLayer(index)
@@ -40,4 +37,4 @@ function TiledHelper:processObjectLayer(world, map, layerName)
   end
 end
 
-return TiledHelper
+return TiledObjectFactory
