@@ -2,6 +2,8 @@ Gamestate = require 'libs.hump.gamestate'
 Menu = require 'gamestates.Menu'
 inspect = require 'helpers.inspect'
 
+TILE_SIZE = 32
+
 function love.load()
   Gamestate.registerEvents()
   Gamestate.switch(Menu)

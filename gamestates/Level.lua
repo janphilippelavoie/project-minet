@@ -15,13 +15,14 @@ camera = nil
 local map, world
 
 function Level:enter(_, mapFile)
-  map = sti(mapFile, {"bump"})
-  world = bump.newWorld(32)
+  world = bump.newWorld(TILE_SIZE)
   Entities:enter(world)
+  pcall(TiledObjectFactory.processEntities, TiledObjectFactory, world, mapFile) --wrapping with pcall for old levels
+  map = sti(mapFile, {'bump'})
+  pcall(map.removeLayer, map, 'entities') --wrapping with pcall for old levels
   TiledObjectFactory:processObjectLayer(world, map, 'meta')
   map:bump_init(world)
   camera = Camera(0, love.graphics.getHeight()/2)
-
 end
 
 function Level:keypressed(key)
